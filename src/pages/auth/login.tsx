@@ -1,4 +1,3 @@
-import React from "react";
 import AppLayout from "../../layouts/app-layout";
 import { Link } from "react-router-dom";
 
@@ -48,7 +47,12 @@ const Login = () => {
             </button>
           </div>
           <div className="flex justify-end mt-4">
-            <Link to="/register" className="text-sm text-neutral-500 hover:text-neutral-700">didn’t have an acount?</Link>
+            <Link
+              to="/register"
+              className="text-sm text-neutral-500 hover:text-neutral-700"
+            >
+              didn’t have an acount?
+            </Link>
           </div>
         </div>
       </div>
