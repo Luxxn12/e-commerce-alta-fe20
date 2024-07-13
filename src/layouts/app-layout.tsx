@@ -13,7 +13,7 @@ const AppLayout = (props: Props) => {
         <Navbar />
       </header>
 
-      <main className="flex-grow p-4 bg-lightGray">{children}</main>
+      <main className="flex-grow bg-lightGray">{children}</main>
 
       <footer className="bg-lightGray py-4 z-10">
         <p className="text-neutral-600 container">
