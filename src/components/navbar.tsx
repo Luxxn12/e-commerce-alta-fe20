@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-lightGray">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-        <a className="flex items-center rtl:space-x-reverse">
+        <a className="flex items-center rtl:space-x-reverse" href="/">
           <ApplicationLogo width="70" height="70" />
           <span className="self-center text-neutral-600 text-md font-semibold whitespace-nowrap dark:text-white">
             Toko Gadjet
