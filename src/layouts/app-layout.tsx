@@ -9,7 +9,7 @@ const AppLayout = (props: Props) => {
   const { children } = props;
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="z-10">
+      <header className="sticky top-0 z-10">
         <Navbar />
       </header>
 
