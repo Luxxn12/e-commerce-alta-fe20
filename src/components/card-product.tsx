@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { IProduct } from "../utils/apis/products/types";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
 
 interface ProductCardProps {
   data: IProduct;
@@ -12,7 +13,7 @@ interface ProductCardProps {
 export const CardProduct = (props: ProductCardProps) => {
   const { data, navigation } = props;
   return (
-    <Link to={navigation} >
+    <Link to={navigation}>
       <Card className="w-full max-w-sm">
         <img
           src={data.image}
@@ -25,7 +26,7 @@ export const CardProduct = (props: ProductCardProps) => {
           <div className="space-y-1">
             <h3 className="font-semibold text-lg">{data.name}</h3>
             <p className="text-muted-foreground text-sm line-clamp-2">
-             {data.description}
+              {data.description}
             </p>
           </div>
           <div className="flex items-center justify-between pt-4">
@@ -35,5 +36,21 @@ export const CardProduct = (props: ProductCardProps) => {
         </CardContent>
       </Card>
     </Link>
+  );
+};
+
+export const ProductCardLoading = () => {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-[250px] w-[250px] rounded-xl" />
+      <div className="p-4 space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+      <div className="flex items-center justify-between pt-4">
+      <Skeleton className="h-4 w-[100px]" />
+      <Skeleton className="h-4 w-[100px]" />
+      </div>
+    </div>
   );
 };
