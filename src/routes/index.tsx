@@ -24,10 +24,10 @@ const App = () => {
       path: "/profile",
       element: <Profile />,
     },
-    {
-      path: "/dashboard",
-      element: <Sales />,
-    },
+    // {
+    //   path: "/dashboard",
+    //   element: <Sales />,
+    // },
     {
       path: "/products",
       element: <Products />,
