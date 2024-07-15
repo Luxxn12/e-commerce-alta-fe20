@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
         <a className="flex items-center rtl:space-x-reverse" href="/">
           <ApplicationLogo width="70" height="70" />
           <span className="self-center text-neutral-600 text-md font-semibold whitespace-nowrap dark:text-white">
-            Toko Gadjet
+            Toko Gadget
           </span>
         </a>
         <button

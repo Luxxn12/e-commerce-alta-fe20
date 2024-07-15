@@ -3,7 +3,7 @@ import { IProduct } from "./types";
 export const sampleProductCard: IProduct[] = [
     {
         id: 1,
-        name: "Product 1",
+        product_name: "Product 1",
         price: 100000,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         image: "https://akcdn.detik.net.id/visual/2023/10/26/samsung-s23-fe-cnbc-indonesiafaisal-rahman-6_169.jpeg?w=715&q=90",
@@ -15,7 +15,7 @@ export const sampleProductCard: IProduct[] = [
     },
     {
         id: 2,
-        name: "Product 2",
+        product_name: "Product 2",
         price: 200000,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         image: "https://akcdn.detik.net.id/visual/2023/10/26/samsung-s23-fe-cnbc-indonesiafaisal-rahman-6_169.jpeg?w=715&q=90",
@@ -27,7 +27,7 @@ export const sampleProductCard: IProduct[] = [
     },
     {
         id: 3,
-        name: "Product 3",
+        product_name: "Product 3",
         price: 300000,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         image: "https://akcdn.detik.net.id/visual/2023/10/26/samsung-s23-fe-cnbc-indonesiafaisal-rahman-6_169.jpeg?w=715&q=90",
@@ -39,7 +39,7 @@ export const sampleProductCard: IProduct[] = [
     },
     {
         id: 4,
-        name: "Product 4",
+        product_name: "Product 4",
         price: 300000,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         image: "https://akcdn.detik.net.id/visual/2023/10/26/samsung-s23-fe-cnbc-indonesiafaisal-rahman-6_169.jpeg?w=715&q=90",
