@@ -16,15 +16,15 @@ export const CardProduct = (props: ProductCardProps) => {
     <Link to={navigation}>
       <Card className="w-full max-w-sm">
         <img
-          src={data.image}
-          alt={data.name}
+          src={data.product_picture}
+          alt={data.product_name}
           width={250}
           height={250}
           className="rounded-t-lg object-cover w-full aspect-square"
         />
         <CardContent className="p-4 space-y-2">
           <div className="space-y-1">
-            <h3 className="font-semibold text-lg">{data.name}</h3>
+            <h3 className="font-semibold text-lg">{data.product_name}</h3>
             <p className="text-muted-foreground text-sm line-clamp-2">
               {data.description}
             </p>

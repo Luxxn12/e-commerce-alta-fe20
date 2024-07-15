@@ -12,7 +12,7 @@ export default function Homepage() {
           <div className="w-full h-full flex flex-col justify-center space-y-4 order-1 md:order-none">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-4xl/none">
-                Find you dream gadjet!
+                Find you dream Gadget!
               </h1>
               <p className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400">
                 Get access to the latest and greatest gadgets with exclusive
