@@ -21,10 +21,10 @@ export const CardProduct = (props: ProductCardProps) => {
           height={250}
           className="rounded-t-lg object-cover w-full aspect-square"
         />
-        <CardContent className="p-4 space-y-2">
+        <div className="px-1 py-4 space-y-2">
           <div className="space-y-1">
             <h3 className="font-semibold text-lg">{data.name}</h3>
-            <p className="text-muted-foreground text-sm line-clamp-2">
+            <p className="text-muted-foreground text-sm line-clamp-2 text-justify">
              {data.description}
             </p>
           </div>
@@ -32,7 +32,7 @@ export const CardProduct = (props: ProductCardProps) => {
             <span className="font-semibold text-xl">Rp.{data.price}</span>
             <Button>Add to Cart</Button>
           </div>
-        </CardContent>
+        </div>
       </Card>
     </Link>
   );
