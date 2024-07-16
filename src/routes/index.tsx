@@ -10,6 +10,10 @@ import DetailProduct from "../pages/sales/detail-product";
 // import Sales from "../pages/sales";
 import Show from "../pages/product/show";
 import Cart from "../pages/cart";
+import Sales from "../pages/sales";
+import MyTransaction from "../pages/my-transaction";
+import DetailSeles from "../pages/my-transaction/sales-transaction/detail-seles";
+import DetailTransaction from "../pages/my-transaction/transaction/detail-transaction";
 // import Sales from "../pages/sales";
 
 const App = () => {
@@ -32,7 +36,7 @@ const App = () => {
     },
     {
       path: "/my-product",
-      // element: <Sales />,
+      element: <Sales />,
     },
     {
       path: "/my-product/add-product",
@@ -57,6 +61,18 @@ const App = () => {
     {
       path: "/cart",
       element: <Cart />,
+    },
+    {
+      path: "/my-transaction",
+      element: <MyTransaction />,
+    },
+    {
+      path: "/my-transaction/detail-seles/:id_product",
+      element: <DetailSeles />,
+    },
+    {
+      path: "/my-transaction/detail-transaction/:id_product",
+      element: <DetailTransaction />,
     },
     // {
     //   path: "*",
