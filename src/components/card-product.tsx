@@ -7,11 +7,12 @@ import { Skeleton } from "./ui/skeleton";
 interface ProductCardProps {
   data: IProduct;
   navigation: string;
+  className?: string; // className tidak required sekarang
   "data-testid"?: string;
 }
 
 export const CardProduct = (props: ProductCardProps) => {
-  const { data, navigation } = props;
+  const { data, navigation, className = "" } = props;
   return (
     <Link to={navigation}>
       <Card className="w-full max-w-sm">
@@ -20,7 +21,7 @@ export const CardProduct = (props: ProductCardProps) => {
           alt={data.product_name}
           width={250}
           height={250}
-          className="rounded-t-lg object-cover w-full aspect-square"
+          className={`rounded-t-lg object-cover w-full aspect-square ${className}`}
         />
         <div className="px-1 py-4 space-y-2">
           <div className="space-y-1">
@@ -48,8 +49,8 @@ export const ProductCardLoading = () => {
         <Skeleton className="h-4 w-[200px]" />
       </div>
       <div className="flex items-center justify-between pt-4">
-      <Skeleton className="h-4 w-[100px]" />
-      <Skeleton className="h-4 w-[100px]" />
+        <Skeleton className="h-4 w-[100px]" />
+        <Skeleton className="h-4 w-[100px]" />
       </div>
     </div>
   );

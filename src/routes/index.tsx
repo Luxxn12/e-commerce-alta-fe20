@@ -5,6 +5,7 @@ import Register from "../pages/auth/register";
 import Profile from "../pages/user/profile";
 import Sales from "../pages/sales";
 import Products from "../pages/product";
+import Show from "../pages/product/show";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const App = () => {
     {
       path: "/products",
       element: <Products />,
+    },
+    {
+      path: "/product/:id_product",
+      element: <Show />,
     },
     // {
     //   path: "*",
