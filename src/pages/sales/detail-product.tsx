@@ -1,56 +1,54 @@
-import { Layers, TagIcon, User } from "lucide-react";
+
 import AppLayout from "../../layouts/app-layout";
 
 
 export default function DetailProduct() {
   return (
     <AppLayout>
-      <div className=" flex w-full py-10">
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-6 mx-auto py-6">
-          <div className="grid gap-4 md:gap-8">
+           <section className="container mx-auto lg:py-12 py-6">
+        <div className="flex flex-col md:flex-row justify-center">
+          <div className="flex-1 max-w-md md:max-w-xl p-4">
             <img
-              src="/img-phone2.png"
-              alt="Product Image"
-              width={500}
-              height={800}
+              src="https://akcdn.detik.net.id/visual/2023/10/26/samsung-s23-fe-cnbc-indonesiafaisal-rahman-6_169.jpeg?w=715&q=90"
+              alt="Samsung Galaxy S23 FE"
+              className="rounded-md"
+              loading="lazy"
             />
           </div>
-          <div className="grid gap-4 md:gap-8">
-            <div>
-              <h1 className="font-bold text-3xl lg:text-4xl">Iphone 15 128GB Rose Gold</h1>
-              <div className="flex items-center gap-4 mt-2">
-                <div className="text-4xl font-bold">Rp. 14.999.000</div>
-              </div>
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center gap-2">
-                <TagIcon className="w-5 h-5 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Category: Clothing</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Layers className="w-5 h-5 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Stock: 30</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <User className="w-5 h-5 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">User: Jhon</span>
-              </div>
-            </div>
-            <div className="text-sm leading-loose text-muted-foreground">
-              <p className="font-bold text-xl lg:text-xl text-black">Description</p>
-              <p>
-                Introducing the Acme Prism T-Shirt, a perfect blend of style and comfort for the modern individual. This tee
-                is crafted with a meticulous composition of 60% combed ringspun cotton and 40% polyester jersey, ensuring a
-                soft and breathable fabric that feels gentle against the skin.
-              </p>
-              <p>
-                The design of the Acme Prism T-Shirt is as striking as it is comfortable. The shirt features a unique
-                prism-inspired pattern that adds a modern and eye-catching touch to your ensemble.
+          <div className="flex-1 max-w-md md:max-w-xl p-4">
+            <h1 className="font-semibold text-xl text-neutral-700">
+              Samsung Galaxy S23 FE 128/6 Mint Garansi Resmi SEIN
+            </h1>
+            <span className="text-sm text-neutral-400">
+              Seller: Username | Category: Smartphone | Stock: 4
+            </span>
+
+            <div className="my-4">
+              <h5 className="text-lg text-neutral-600">Description</h5>
+              <p className="text-justify text-neutral-500">
+                The iPhone 15 in Pink embodies sophistication with its soft pink
+                color palette. It boasts a stunning Super Retina XDR display
+                spanning 6.1 inches, delivering vibrant visuals and sharp
+                detail. Equipped with a powerful dual 48MP camera system, it
+                ensures exceptional photo and video quality, enhanced by
+                advanced imaging technologies. <br /> <br />
+                Under the hood, the iPhone 15 runs on the cutting-edge A16
+                Bionic chip, offering blazing-fast performance and improved
+                energy efficiency. It promises extended battery life, keeping
+                you connected and productive throughout the day. Security is
+                seamless with Face ID, providing quick and secure access to your
+                device. With 5G support, the iPhone 15 enables lightning-fast
+                connectivity for streaming, gaming, and browsing. <br /> <br />
+                It operates on iOS 17, Apple's latest operating system, packed
+                with new features and enhancements to elevate your user
+                experience. In essence, the iPhone 15 Pink combines innovative
+                technology with a stylish design, making it not just a device,
+                but a statement of modern luxury and functionality.
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </AppLayout>
   );
 }

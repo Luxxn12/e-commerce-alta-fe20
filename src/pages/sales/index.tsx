@@ -21,7 +21,6 @@ import {
 } from "../../components/ui/pagination";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-import Alert from "../../components/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../components/ui/alert-dialog";
 
 export default function Sales() {
@@ -84,14 +83,14 @@ export default function Sales() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem asChild>
                           <Link to={`/my-product/${product.id}`}>
                             Edit
                           </Link>
                         </DropdownMenuItem>
                         <AlertDialog>
                           <AlertDialogTrigger>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                            <DropdownMenuItem >Delete</DropdownMenuItem>
                           </AlertDialogTrigger>
                           <AlertDialogContent>
                             <AlertDialogHeader>
@@ -107,7 +106,7 @@ export default function Sales() {
                             </AlertDialogFooter>
                           </AlertDialogContent>
                         </AlertDialog>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem asChild>
                           <Link to={`/my-product/detail/${product.id}`}>
                             View Details
                           </Link>
