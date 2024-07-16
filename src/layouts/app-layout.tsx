@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/navbar";
 
 interface Props {
@@ -7,6 +8,8 @@ interface Props {
 
 const AppLayout = (props: Props) => {
   const { children } = props;
+  const location = useLocation();
+
   return (
     <div className="flex flex-col min-h-screen font-roboto">
       <header className="sticky top-0 z-10">
@@ -15,7 +18,11 @@ const AppLayout = (props: Props) => {
 
       <main className="flex-grow bg-lightGray">{children}</main>
 
-      <footer className="bg-lightGray py-4 z-10">
+      <footer
+        className={`py-4 z-10 ${
+          location.pathname === "/" ? "bg-white" : "bg-lightGray"
+        }`}
+      >
         <p className="text-neutral-600 container">
           {new Date().getFullYear()} Toko Gadjet. All Rights Reserved.
         </p>

@@ -3,7 +3,6 @@ import HomePage from "../pages/index";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/register";
 import Profile from "../pages/user/profile";
-import Sales from "../pages/sales";
 import Products from "../pages/product";
 import AddProduct from "../pages/sales/add-product";
 import EditProduct from "../pages/sales/edit-product";
@@ -46,6 +45,10 @@ const App = () => {
     {
       path: "/products",
       element: <Products />,
+    },
+    {
+      path: "/product/:id_product",
+      element: <Show />,
     },
     // {
     //   path: "*",

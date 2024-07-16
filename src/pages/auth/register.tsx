@@ -34,7 +34,7 @@ const Register = () => {
             <input
               type="email"
               id="email"
-              className="bg-transparent border border-neutral-500 text-neutral-700 text-sm rounded-lg block w-full p-2.5"
+              className="bg-transparent border border-neutral-500 text-neutraal-700 text-sm rounded-lg block w-full p-2.5"
               placeholder="john.doe@company.com"
             />
           </div>

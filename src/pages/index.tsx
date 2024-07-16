@@ -51,6 +51,8 @@ export default function Homepage() {
                   data={product}
                   navigation={''}
                   data-testid={`detail-other-procudt`}
+                  //kondisional tidak required cLassName
+                  className="border border-neutral-200 shadow"
                 />
              )
             })}
