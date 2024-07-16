@@ -7,6 +7,10 @@ import Products from "../pages/product";
 import AddProduct from "../pages/sales/add-product";
 import EditProduct from "../pages/sales/edit-product";
 import DetailProduct from "../pages/sales/detail-product";
+// import Sales from "../pages/sales";
+import Show from "../pages/product/show";
+import Cart from "../pages/cart";
+// import Sales from "../pages/sales";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -28,7 +32,7 @@ const App = () => {
     },
     {
       path: "/my-product",
-      element: <Sales />,
+      // element: <Sales />,
     },
     {
       path: "/my-product/add-product",
@@ -49,6 +53,10 @@ const App = () => {
     {
       path: "/product/:id_product",
       element: <Show />,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
     },
     // {
     //   path: "*",
