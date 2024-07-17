@@ -38,7 +38,7 @@ export default function Homepage() {
             />
           </div>
         </section>
-      </div>
+    </div>
       <div className=" w-full  lg:px-24 px-0 md:px-0 bg-white py-10">
         <div className="container">
           <div className="flex flex-col flex-grow justify-start">
