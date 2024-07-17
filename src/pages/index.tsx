@@ -3,6 +3,7 @@ import AppLayout from "../layouts/app-layout";
 import { Button } from "../components/ui/button";
 import { CardProduct } from "../components/card-product";
 import { sampleProductCard } from "../utils/apis/products/sample-data";
+import ProductCategories from "../components/product-categories";
 
 export default function Homepage() {
   return (
@@ -22,7 +23,7 @@ export default function Homepage() {
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button>
-                <Link to={'/login'} data-testid="#">
+                <Link to="/products" data-testid="#">
                   Get Started
                 </Link>
               </Button>
@@ -37,13 +38,27 @@ export default function Homepage() {
             />
           </div>
         </section>
-      </div>
+    </div>
       <div className=" w-full  lg:px-24 px-0 md:px-0 bg-white py-10">
         <div className="container">
-          <div className="flex flex-row justify-center text-center">
-            <text className="text-2xl font-bold">Newest Release</text>
+          <div className="flex flex-col flex-grow justify-start">
+            <h5 className="text-xl font-semibold text-neutral-600">
+              Browse by category or check out our newest arrivals.
+            </h5>
+            {/* <p className="text-neutral-500">
+              Choose items by category or the latest from us.
+            </p> */}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-items-center gap-4 py-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 py-5">
+            <ProductCategories />
+          </div>
+          {/* <div className="flex flex-row justify-start text-center">
+            <h5 className="text-xl font-semibold text-neutral-600">
+              Newest release
+            </h5>
+            <text className="text-2xl font-bold">Newest Release</text>
+          </div> */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-items-center gap-4 py-10 pt-0">
             {sampleProductCard.map((product) => {
               return (
                 <CardProduct
@@ -54,7 +69,7 @@ export default function Homepage() {
                   //kondisional tidak required cLassName
                   className="border border-neutral-200 shadow"
                 />
-             )
+              );
             })}
           </div>
 
@@ -68,4 +83,3 @@ export default function Homepage() {
     </AppLayout>
   );
 }
-

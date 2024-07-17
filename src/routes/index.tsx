@@ -74,10 +74,10 @@ const App = () => {
       path: "/my-transaction/detail-transaction/:id_product",
       element: <DetailTransaction />,
     },
-    // {
-    //   path: "*",
-    //   element: <NotFoundPage />,
-    // },
+      // {
+      //   path: "*",
+      //   element: <NotFoundPage />,
+      // },
   ]);
 
   return <RouterProvider router={router} />;
