@@ -5,10 +5,12 @@ import { loginSchema, LoginSchema } from "../../utils/apis/auth/type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { userLogin } from "../../utils/apis/auth/api";
+import { useAuth } from "../../utils/apis/contexts/token";
 
 const Login = () => {
-  const [serverError, setServerError] = useState<string | null>(null);
+  const { setToken, addNotification } = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -23,18 +25,19 @@ const Login = () => {
   });
 
   async function onSubmit(data: LoginSchema) {
-    console.log("Form submitted with data:", data);
+    setIsLoading(true);
     try {
       const response = await userLogin(data);
-      console.log("Response received:", response);
-      setServerError(null);
-      console.log(response);
-      navigate("/login");
+      setToken(response.data.token);
+      addNotification(response.message, "success");
+      navigate("/");
     } catch (error: any) {
-      console.log("Error occurred:", error);
-      setServerError(error.message);
+      addNotification(error.message, "error");
+    } finally {
+      setIsLoading(false);
     }
   }
+
   return (
     <AppLayout>
       <div className="flex justify-center lg:pt-28 lg:px-0 px-4 py-8">
@@ -43,9 +46,6 @@ const Login = () => {
           <span className="text-sm text-neutral-500">
             Sign in to Easily Purchase Your Favorite Gadgets.
           </span>
-          {serverError && (
-            <span className="text-sm text-red-500">{serverError}</span>
-          )}
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-6">
               <label
@@ -62,7 +62,9 @@ const Login = () => {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
+                <p className="text-rose-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
             </div>
             <div className="mt-4">
@@ -80,7 +82,7 @@ const Login = () => {
                 {...register("password")}
               />
               {errors.password && (
-                <p className="text-red-500 text-sm">
+                <p className="text-rose-500 text-sm mt-1">
                   {errors.password.message}
                 </p>
               )}
@@ -88,9 +90,12 @@ const Login = () => {
             <div className="block mt-6">
               <button
                 type="submit"
-                className="text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center"
+                disabled={isLoading} // Disable button when loading
+                className={`text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center ${
+                  isLoading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                Submit
+                {isLoading ? "Logging in..." : "Submit"}
               </button>
             </div>
           </form>
@@ -100,7 +105,7 @@ const Login = () => {
               to="/register"
               className="text-sm text-neutral-500 hover:text-neutral-700"
             >
-              didn’t have an acount?
+              Don't have an account yet?
             </Link>
           </div>
         </div>

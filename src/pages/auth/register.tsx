@@ -5,10 +5,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterSchema } from "../../utils/apis/auth/type";
 import { userRegister } from "../../utils/apis/auth/api";
+import { useAuth } from "../../utils/apis/contexts/token";
 
 const Register = () => {
-  const [serverError, setServerError] = useState<string | null>(null);
+  const { addNotification } = useAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // State for loading indicator
 
   const {
     register,
@@ -25,15 +27,15 @@ const Register = () => {
   });
 
   async function onSubmit(data: RegisterSchema) {
-    console.log("Form submitted with data:", data);
+    setIsLoading(true);
     try {
       const response = await userRegister(data);
-      console.log("Response received:", response);
-      setServerError(null);
+      addNotification(response.message, "success");
       navigate("/login");
     } catch (error: any) {
-      console.log("Error occurred:", error);
-      setServerError(error.message);
+      addNotification(error.message, "error");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -57,7 +59,7 @@ const Register = () => {
                 type="text"
                 id="fullName"
                 className="bg-transparent border border-neutral-500 text-neutral-700 text-sm rounded-lg block w-full p-2.5"
-                placeholder="john doe"
+                placeholder="John Doe"
                 {...register("full_name")}
               />
               {errors.full_name && (
@@ -76,7 +78,7 @@ const Register = () => {
               <input
                 type="email"
                 id="email"
-                className="bg-transparent border border-neutral-500 text-neutraal-700 text-sm rounded-lg block w-full p-2.5"
+                className="bg-transparent border border-neutral-500 text-neutral-700 text-sm rounded-lg block w-full p-2.5"
                 placeholder="john.doe@company.com"
                 {...register("email")}
               />
@@ -106,30 +108,33 @@ const Register = () => {
             </div>
             <div className="mt-4">
               <label
-                htmlFor="password"
+                htmlFor="confirmPassword"
                 className="block mb-2 text-sm font-medium text-neutral-500"
               >
                 Confirm password
               </label>
               <input
                 type="password"
-                id="password"
+                id="confirmPassword"
                 className="bg-transparent border border-neutral-500 text-neutral-700 text-sm rounded-lg block w-full p-2.5"
                 placeholder="**********"
                 {...register("repassword")}
-                />
-                {errors.repassword && (
-                  <p className="text-red-500 text-sm">
-                    {errors.repassword.message}
-                  </p>
-                )}
+              />
+              {errors.repassword && (
+                <p className="text-red-500 text-sm">
+                  {errors.repassword.message}
+                </p>
+              )}
             </div>
             <div className="block mt-6">
               <button
                 type="submit"
-                className="text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center"
+                disabled={isLoading} // Disable button when loading
+                className={`text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center ${
+                  isLoading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                Submit
+                {isLoading ? "Please wait..." : "Submit"}
               </button>
             </div>
           </form>
@@ -138,7 +143,7 @@ const Register = () => {
               to="/login"
               className="text-sm text-neutral-500 hover:text-neutral-700"
             >
-              Already have acount?
+              Already have an account?
             </Link>
           </div>
         </div>
