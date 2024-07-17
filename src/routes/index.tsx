@@ -14,6 +14,7 @@ import Sales from "../pages/sales";
 import MyTransaction from "../pages/my-transaction";
 import DetailSeles from "../pages/my-transaction/sales-transaction/detail-seles";
 import DetailTransaction from "../pages/my-transaction/transaction/detail-transaction";
+import NotFoundPage from "../pages/not-found-page";
 // import Sales from "../pages/sales";
 
 const App = () => {
@@ -74,10 +75,10 @@ const App = () => {
       path: "/my-transaction/detail-transaction/:id_product",
       element: <DetailTransaction />,
     },
-      // {
-      //   path: "*",
-      //   element: <NotFoundPage />,
-      // },
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
   ]);
 
   return <RouterProvider router={router} />;
