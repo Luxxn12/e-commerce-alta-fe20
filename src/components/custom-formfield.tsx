@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
+import  { ReactNode } from "react";
 import {
   Control,
   ControllerRenderProps,
   FieldPath,
   FieldValues,
   Path,
-} from "react-hook-form/dist";
+} from "react-hook-form";
 import {
   FormControl,
   FormDescription,

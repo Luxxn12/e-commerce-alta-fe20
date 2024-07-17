@@ -64,7 +64,7 @@ export default function Homepage() {
                 <CardProduct
                   key={product.id}
                   data={product}
-                  navigation={""}
+                  navigation={`/product/${product.id}`}
                   data-testid={`detail-other-procudt`}
                   //kondisional tidak required cLassName
                   className="border border-neutral-200 shadow"
@@ -73,8 +73,10 @@ export default function Homepage() {
             })}
           </div>
 
-          <div className="flex justify-center">
-            <Button>More products</Button>
+          <div className="flex flex-row justify-center mt-5 text-center">
+            <Link to={'/products'}>
+              <Button>Load More Products</Button>
+            </Link>
           </div>
         </div>
       </div>

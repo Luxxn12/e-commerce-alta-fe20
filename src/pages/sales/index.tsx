@@ -125,7 +125,7 @@ export default function Sales() {
               <PaginationItem>
                 <PaginationPrevious
                   onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
+                  // disabled={currentPage === 1}
                 />
               </PaginationItem>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(
@@ -143,7 +143,7 @@ export default function Sales() {
               <PaginationItem>
                 <PaginationNext
                   onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
+                  // disabled={currentPage === totalPages}
                 />
               </PaginationItem>
             </PaginationContent>
