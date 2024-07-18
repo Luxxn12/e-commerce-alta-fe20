@@ -130,9 +130,8 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isLoading} // Disable button when loading
-                className={`text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center ${
-                  isLoading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`text-white bg-darkGray hover:bg-darkGray/80 font-medium rounded-lg text-sm px-5 py-2.5 w-full text-center ${isLoading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
               >
                 {isLoading ? "Please wait..." : "Submit"}
               </button>

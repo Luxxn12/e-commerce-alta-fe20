@@ -9,6 +9,7 @@ const base = z.object({
   price: z.number().min(1, { message: "price is requared" }),
   description: z.string().min(1, { message: "Description is required" }),
   category: z.string().min(1, { message: "Category is required" }),
+  saller: z.string().min(1, { message: "saller is required" }),
   stock: z.number().min(1, { message: "Stock is required" }),
 });
 
@@ -47,10 +48,10 @@ export const editProductSchema = z
   .merge(base);
 
 export const productSchema = z.discriminatedUnion("mode", [
-    addProductSchema,
-    editProductSchema,
-])
-  
+  addProductSchema,
+  editProductSchema,
+]);
+
 export type ProductSchema = z.infer<typeof productSchema>;
 
 export interface IProduct {
@@ -61,6 +62,7 @@ export interface IProduct {
   product_picture: string;
   category: string;
   stock: number;
+  seller: string;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;

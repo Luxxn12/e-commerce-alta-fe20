@@ -42,7 +42,7 @@ const Show = () => {
               {isProduct?.product_name}
             </h1>
             <span className="text-sm text-neutral-400">
-              Seller: Username | Category: {isProduct?.category} | Stock: {isProduct?.stock}
+              Seller: {isProduct?.seller} | Category: {isProduct?.category} | Stock: {isProduct?.stock}
             </span>
             <div>
               <p className="text-lg text-lime-600 mb-3">{isProduct?.price}</p>

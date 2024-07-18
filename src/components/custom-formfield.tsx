@@ -1,4 +1,4 @@
-import  { ReactNode } from "react";
+import { ReactNode } from "react";
 import {
   Control,
   ControllerRenderProps,
@@ -14,7 +14,15 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 interface Props<T extends FieldValues> {
   name: FieldPath<T>;
@@ -61,8 +69,7 @@ export function CustomFormSelect<T extends FieldValues>(
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
-          <Select
-            onValueChange={field.onChange} defaultValue={field.value}>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder={placeholder} />

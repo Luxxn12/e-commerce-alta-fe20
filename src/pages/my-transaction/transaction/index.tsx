@@ -44,7 +44,7 @@ function Transaction() {
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem asChild>
-                        <Link to={`/my-transaction/detail-transaction/${transaction.id}`}>
+                        <Link to={`/my-transaction/${transaction.id}`}>
                         View
                         </Link>
                       </DropdownMenuItem>

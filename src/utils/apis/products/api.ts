@@ -55,7 +55,7 @@ export const addProduct = async (body: ProductSchema) => {
       },
     });
 
-    return response.data as Response;
+    return response.data as Response<any>
   } catch (error: any) {
     const { message } = error.response.data.message;
     throw new Error(message);
