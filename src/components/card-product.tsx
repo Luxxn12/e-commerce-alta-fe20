@@ -3,6 +3,7 @@ import { IProduct } from "../utils/apis/products/types";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
+import { formatCurrency } from "../utils/format-number";
 
 interface ProductCardProps {
   data: IProduct;
@@ -31,7 +32,7 @@ export const CardProduct = (props: ProductCardProps) => {
             </p>
           </div>
           <div className="flex items-center justify-between pt-4">
-            <span className="font-semibold text-xl">Rp.{data.price}</span>
+            <span className="font-semibold text-lg">{formatCurrency(data.price)}</span>
             <Button>Add to Cart</Button>
           </div>
         </div>
