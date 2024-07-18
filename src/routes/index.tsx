@@ -44,11 +44,11 @@ const App = () => {
       element: <AddProduct />,
     },
     {
-      path: "/my-product/:id_product",
+      path: "/my-product/:id_product/edit",
       element: <EditProduct />,
     },
     {
-      path: "/my-product/detail/:id_product",
+      path: "/my-product/:id_product",
       element: <DetailProduct />,
     },
     {
@@ -68,11 +68,11 @@ const App = () => {
       element: <MyTransaction />,
     },
     {
-      path: "/my-transaction/detail-seles/:id_product",
+      path: "/my-transaction/:id_product",
       element: <DetailSeles />,
     },
     {
-      path: "/my-transaction/detail-transaction/:id_product",
+      path: "/my-transaction/:id_product",
       element: <DetailTransaction />,
     },
     {

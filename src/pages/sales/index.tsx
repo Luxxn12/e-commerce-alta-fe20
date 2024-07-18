@@ -10,7 +10,7 @@ import {
 } from "../../components/ui/table";
 import AppLayout from "../../layouts/app-layout";
 import { sampleProductCard } from "../../utils/apis/products/sample-data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Pagination,
   PaginationContent,
@@ -22,10 +22,28 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../components/ui/alert-dialog";
+import { IProduct } from "../../utils/apis/products/types";
+import { useAuth } from "../../utils/apis/contexts/token";
+import { getProduct } from "../../utils/apis/products/api";
 
 export default function Sales() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
+  const [data, setData] = useState<IProduct[]>([])
+  const { addNotification } = useAuth()
+
+  async function fetchData() {
+    try {
+      const response = await getProduct()
+      setData(response.data)
+    } catch (error: any) {
+      addNotification(error.message, "error");
+    } 
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const lastProductIndex = currentPage * productsPerPage - 1;
   const firstProductIndex = Math.max(0, lastProductIndex - productsPerPage + 1);
@@ -53,11 +71,10 @@ export default function Sales() {
                 <TableHead>Stock</TableHead>
                 <TableHead>Category</TableHead>
                 <TableHead>Price</TableHead>
-                {/* <TableHead>Actions</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {currentProducts.map((product, index) => (
+              {data.map((product, index) => (
                 <TableRow key={product.id}>
                   <TableCell>{index + firstProductIndex + 1}</TableCell>
                   <TableCell className="font-medium">{product.product_name}</TableCell>
@@ -84,7 +101,7 @@ export default function Sales() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem asChild>
-                          <Link to={`/my-product/${product.id}`}>
+                          <Link to={`/my-product/${product.id}/edit`}>
                             Edit
                           </Link>
                         </DropdownMenuItem>
@@ -107,7 +124,7 @@ export default function Sales() {
                           </AlertDialogContent>
                         </AlertDialog>
                         <DropdownMenuItem asChild>
-                          <Link to={`/my-product/detail/${product.id}`}>
+                          <Link to={`/my-product/${product.id}`}>
                             View Details
                           </Link>
                         </DropdownMenuItem>
