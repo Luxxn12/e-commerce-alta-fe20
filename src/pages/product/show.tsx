@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../../components/ui/button";
 import AppLayout from "../../layouts/app-layout";
 import { IProduct } from "../../utils/apis/products/types";
-import { getDetailProduct, getProduct } from "../../utils/apis/products/api";
+import { getDetailProduct } from "../../utils/apis/products/api";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../utils/apis/contexts/token";
 
