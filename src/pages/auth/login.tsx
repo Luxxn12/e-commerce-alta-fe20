@@ -28,6 +28,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await userLogin(data);
+
       setToken(response.data.token);
       addNotification(response.message, "success");
       navigate("/");

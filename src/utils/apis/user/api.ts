@@ -1,5 +1,5 @@
 import { Response } from "../../types/api";
-import axiosWithConfig, { setAxiosConfig } from "../config/axios-with-config";
+import { openAPI, setAxiosConfig } from "../config/axios-with-config";
 import { UserProfile } from "./type";
 
 export const getUserProfile = async () => {
@@ -11,7 +11,7 @@ export const getUserProfile = async () => {
 
     setAxiosConfig(token);
 
-    const response = await axiosWithConfig.get<Response<UserProfile>>("/users");
+    const response = await openAPI.get<Response<UserProfile>>("/users");
     return response.data;
   } catch (error) {
     console.error("Error fetching user profile:", error);

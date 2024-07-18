@@ -1,10 +1,10 @@
 import { Response } from "../../types/api";
 import { ILogin, LoginSchema, RegisterSchema } from "../auth/type";
-import axiosWithConfig from "../config/axios-with-config";
+import {realAPI} from "../config/axios-with-config";
 
 export const userLogin = async (body: LoginSchema) => {
   try {
-    const response = await axiosWithConfig.post("/login", body);
+    const response = await realAPI.post("/login", body);
 
     console.log("api", response);
 
@@ -18,7 +18,7 @@ export const userLogin = async (body: LoginSchema) => {
 
 export const userRegister = async (body: RegisterSchema) => {
   try {
-    const response = await axiosWithConfig.post("/register", body);
+    const response = await realAPI.post("/register", body);
     return response.data as Response<any>;
   } catch (error: any) {
     const { message } = error.response.data;

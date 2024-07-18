@@ -1,21 +1,34 @@
-import axios from "axios"
+import axios from "axios";
 
-const axiosWithConfig = axios.create()
+const realAPI = axios.create({
+  baseURL: "https://one.ybtech.online",
+});
+
+const openAPI = axios.create({
+  baseURL:
+    "https://virtserver.swaggerhub.com/FarahRaihanunnisa/E-CommerceManagementAPI/1.0.0",
+});
 
 let bearerToken = "";
 
 export const setAxiosConfig = (token: string) => {
   bearerToken = token;
-};
-
-axiosWithConfig.interceptors.request.use((axiosConfig) => {
-  axiosConfig.baseURL = "https://virtserver.swaggerhub.com/FarahRaihanunnisa/E-CommerceManagementAPI/1.0.0";
 
   if (bearerToken !== "") {
-    axiosConfig.headers.Authorization = `Bearer ${bearerToken}`;
+    realAPI.defaults.headers.Authorization = `Bearer ${bearerToken}`;
+    openAPI.defaults.headers.Authorization = `Bearer ${bearerToken}`;
+  } else {
+    delete realAPI.defaults.headers.Authorization;
+    delete openAPI.defaults.headers.Authorization;
   }
+};
 
-  return axiosConfig;
+realAPI.interceptors.request.use((config) => {
+  return config;
 });
 
-export default axiosWithConfig;
+openAPI.interceptors.request.use((config) => {
+  return config;
+});
+
+export { realAPI, openAPI };
