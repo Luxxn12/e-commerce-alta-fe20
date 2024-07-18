@@ -141,7 +141,9 @@ const Navbar: React.FC = () => {
                       <DropdownMenuItem>
                         <Link to="/my-transaction">My transaction</Link>
                       </DropdownMenuItem>
-
+                      <DropdownMenuItem>
+                        <Link to="/profile">Edit profile</Link>
+                      </DropdownMenuItem>
                       <DropdownMenuItem>
                         <button onClick={logout}>logout</button>
                       </DropdownMenuItem>
