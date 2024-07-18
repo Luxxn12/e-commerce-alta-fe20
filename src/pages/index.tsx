@@ -1,11 +1,34 @@
 import { Link } from "react-router-dom";
 import AppLayout from "../layouts/app-layout";
 import { Button } from "../components/ui/button";
-import { CardProduct } from "../components/card-product";
-import { sampleProductCard } from "../utils/apis/products/sample-data";
+import { CardProduct, ProductCardLoading } from "../components/card-product";
 import ProductCategories from "../components/product-categories";
+import { useEffect, useState } from "react";
+import { IProduct } from "../utils/apis/products/types";
+import { getProduct } from "../utils/apis/products/api";
+import { useAuth } from "../utils/apis/contexts/token";
 
 export default function Homepage() {
+  const [data, setData] = useState<IProduct[]>([])
+  const [isLoading, setLoading] = useState(true)
+  const { addNotification } = useAuth()
+
+  async function fetchData() {
+    setLoading(true)
+    try {
+      const response = await getProduct()
+      setData(response.data)
+    } catch (error: any) {
+      addNotification(error.message, "error");
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <AppLayout>
       <div className="container">
@@ -38,39 +61,36 @@ export default function Homepage() {
             />
           </div>
         </section>
-    </div>
+      </div>
       <div className=" w-full  lg:px-24 px-0 md:px-0 bg-white py-10">
         <div className="container">
           <div className="flex flex-col flex-grow justify-start">
             <h5 className="text-xl font-semibold text-neutral-600">
               Browse by category or check out our newest arrivals.
             </h5>
-            {/* <p className="text-neutral-500">
-              Choose items by category or the latest from us.
-            </p> */}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 py-5">
             <ProductCategories />
           </div>
-          {/* <div className="flex flex-row justify-start text-center">
-            <h5 className="text-xl font-semibold text-neutral-600">
-              Newest release
-            </h5>
-            <text className="text-2xl font-bold">Newest Release</text>
-          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-items-center gap-4 py-10 pt-0">
-            {sampleProductCard.map((product) => {
-              return (
-                <CardProduct
-                  key={product.id}
-                  data={product}
-                  navigation={`/product/${product.id}`}
-                  data-testid={`detail-other-procudt`}
-                  //kondisional tidak required cLassName
-                  className="border border-neutral-200 shadow"
-                />
-              );
-            })}
+            {isLoading ? (
+              [...Array(8).keys()].map((key) => <ProductCardLoading key={key} />)
+            ) : (
+              <>
+                {data.map((product) => {
+                  return (
+                    <CardProduct
+                      key={product.id}
+                      data={product}
+                      navigation={`/product/${product.id}`}
+                      data-testid={`detail-other-procudt`}
+                      className="border border-neutral-200 shadow"
+                    />
+                  );
+                })}
+              </>
+            )
+            }
           </div>
 
           <div className="flex flex-row justify-center mt-5 text-center">
