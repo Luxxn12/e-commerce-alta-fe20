@@ -1,7 +1,39 @@
+import { useEffect, useState } from "react";
 import { Button } from "../../components/ui/button";
 import AppLayout from "../../layouts/app-layout";
+import { getProductById } from "../../utils/apis/products/api";
+import { IProduct } from "../../utils/apis/products/types";
+import { formatToRupiah } from "../../utils/formatCurrency";
+import { useAuth } from "../../utils/apis/contexts/token";
+import { useParams } from "react-router-dom";
 
 const Show = () => {
+  const [product, setProduct] = useState<IProduct | null>(null);
+  const { addToCart } = useAuth();
+
+  const { product_id } = useParams();
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
+  const fetchProduct = async () => {
+    try {
+      const response = await getProductById(product_id);
+      setProduct(response.data);
+    } catch (error) {
+      console.error("Failed to fetch product data:", error);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product_id).then(() => {
+        console.log("sukses");
+      });
+    }
+  };
+
   return (
     <AppLayout>
       <section className="container mx-auto lg:py-12 py-6">
@@ -16,14 +48,17 @@ const Show = () => {
           </div>
           <div className="flex-1 max-w-md md:max-w-xl p-4">
             <h1 className="font-semibold text-xl text-neutral-700">
-              Samsung Galaxy S23 FE 128/6 Mint Garansi Resmi SEIN
+              {product?.product_name}
             </h1>
             <span className="text-sm text-neutral-400">
-              Seller: Username | Category: Smartphone | Stock: 4
+              Seller: {product?.seller} | Category: {product?.category} | Stock:{" "}
+              {product?.stock}
             </span>
             <div>
-              <p className="text-lg text-lime-600 mb-3">Rp. 12.399.000</p>
-              <Button>Add to Cart</Button>
+              <p className="text-lg text-lime-600 mb-3">
+                {formatToRupiah(product?.price ?? 0)}
+              </p>
+              <Button onClick={handleAddToCart}>Add to Cart</Button>
             </div>
 
             <div className="my-4">

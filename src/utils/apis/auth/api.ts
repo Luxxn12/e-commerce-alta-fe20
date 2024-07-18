@@ -1,12 +1,10 @@
 import { Response } from "../../types/api";
 import { ILogin, LoginSchema, RegisterSchema } from "../auth/type";
-import {realAPI} from "../config/axios-with-config";
+import { realAPI } from "../config/axios-with-config";
 
 export const userLogin = async (body: LoginSchema) => {
   try {
     const response = await realAPI.post("/login", body);
-
-    console.log("api", response);
 
     return response.data as Response<ILogin>;
   } catch (error: any) {
