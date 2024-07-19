@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApplicationLogo from "./application-logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/apis/contexts/token";
 import {
   DropdownMenu,
@@ -16,8 +16,9 @@ import { UserProfile } from "../utils/apis/user/type";
 import { getUserProfile } from "../utils/apis/user/api";
 
 const Navbar: React.FC = () => {
-  const { token, logout, cart } = useAuth();
+  const { token, logout, cart, addNotification } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 
@@ -36,11 +37,17 @@ const Navbar: React.FC = () => {
     }
   };
 
-  console.log(userProfile);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  function handleLogout() {
+    logout();
+    addNotification("Logout Successfully", "success");
+    navigate('/')
+  }
 
   return (
     <nav className="bg-lightGray">
@@ -148,7 +155,7 @@ const Navbar: React.FC = () => {
                         <Link to="/profile">Edit profile</Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <button onClick={logout}>logout</button>
+                        <button onClick={handleLogout}>logout</button>
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                   </DropdownMenuContent>
