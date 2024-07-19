@@ -75,8 +75,8 @@ export default function Sales() {
             </TableHeader>
             <TableBody>
               {data.map((product, index) => (
-                <TableRow key={product.id}>
-                  <TableCell>{index}</TableCell>
+                <TableRow key={product.id }>
+                  <TableCell>{index + 1}</TableCell>
                   <TableCell className="font-medium">{product.product_name}</TableCell>
                   <TableCell>
                     <img
