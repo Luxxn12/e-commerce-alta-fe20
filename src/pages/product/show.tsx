@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
 import { Button } from "../../components/ui/button";
 import AppLayout from "../../layouts/app-layout";
 import { getProductById } from "../../utils/apis/products/api";

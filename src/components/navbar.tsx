@@ -38,6 +38,8 @@ const Navbar: React.FC = () => {
     }
   };
 
+  console.log(userProfile)
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

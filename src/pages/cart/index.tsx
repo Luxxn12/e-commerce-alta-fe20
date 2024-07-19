@@ -5,14 +5,6 @@ import { ICart } from "../../utils/apis/cart/type";
 import { getCart, deleteCartItem } from "../../utils/apis/cart/api";
 import { formatToRupiah } from "../../utils/formatCurrency";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "../../components/ui/dropdown-menu";
-import { Ellipsis } from "lucide-react";
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -23,11 +15,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../../components/ui/alert-dialog";
+import { Ellipsis } from "lucide-react";
 
 const Cart: React.FC = () => {
   const [cart, setCart] = useState<ICart | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [deleteItemId, setDeleteItemId] = useState<number | null>(null); // State untuk menyimpan id item yang akan dihapus
+  const [deleteItemId, setDeleteItemId] = useState<number | null>(null);
 
   useEffect(() => {
     fetchCart();
@@ -131,9 +124,11 @@ const Cart: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {!cart || cart.cart_items.length === 0 ? (
+              {!cart || !cart.cart_items || cart.cart_items.length === 0 ? (
                 <tr>
-                  <td className="text-center py-4">Keranjang belanja kosong</td>
+                  <td colSpan={5} className="text-center py-4">
+                    Keranjang belanja kosong
+                  </td>
                 </tr>
               ) : (
                 cart.cart_items.map((item) => (
