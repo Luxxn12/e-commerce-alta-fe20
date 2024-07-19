@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("token", newToken);
     } else {
       localStorage.removeItem("token");
+      addNotification("Logged out successfully", "success");
     }
     setToken(newToken);
   };
