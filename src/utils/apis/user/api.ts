@@ -1,5 +1,5 @@
 import { Response } from "../../types/api";
-import { openAPI, realAPI, setAxiosConfig } from "../config/axios-with-config";
+import {  realAPI, setAxiosConfig } from "../config/axios-with-config";
 import { UserProfile } from "./type";
 
 export const getUserProfile = async () => {

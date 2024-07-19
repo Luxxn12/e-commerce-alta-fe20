@@ -47,7 +47,7 @@ export default function Sales() {
 
   const lastProductIndex = currentPage * productsPerPage - 1;
   const firstProductIndex = Math.max(0, lastProductIndex - productsPerPage + 1);
-  const currentProducts = sampleProductCard.slice(firstProductIndex, lastProductIndex + 1);
+  // const currentProducts = sampleProductCard.slice(firstProductIndex, lastProductIndex + 1);
   const totalPages = Math.ceil(sampleProductCard.length / productsPerPage);
 
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
