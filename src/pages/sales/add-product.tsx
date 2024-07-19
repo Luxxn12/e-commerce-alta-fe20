@@ -34,6 +34,7 @@ export default function AddProduct() {
   const form = useForm<ProductSchema>({
     resolver: zodResolver(productSchema),
     defaultValues: {
+      mode: "add",
       product_name: "",
       product_picture: new File([], ""),
       description: "",
@@ -49,7 +50,7 @@ export default function AddProduct() {
       const response = await addProduct(data);
 
       addNotification(response.message, "success");
-      navigate("/sales");
+      navigate("/my-product");
     } catch (error: any) {
       addNotification(error.message, "error");
     }
@@ -72,8 +73,6 @@ export default function AddProduct() {
                 className="grid gap-6"
               >
                 <div className="grid gap-2">
-                  {/* <Label htmlFor="name">Product Name</Label>
-                  <Input id="name" placeholder="Enter product name" /> */}
                   <CustomFormField
                     control={form.control}
                     name="product_name"
@@ -91,8 +90,6 @@ export default function AddProduct() {
                   </CustomFormField>
                 </div>
                 <div className="grid gap-2">
-                  {/* <Label htmlFor="picture">Product Picture</Label>
-                  <Input id="picture" type="file" /> */}
                   <CustomFormField
                     control={form.control}
                     name="product_picture"
@@ -115,8 +112,6 @@ export default function AddProduct() {
                   </CustomFormField>
                 </div>
                 <div className="grid gap-2">
-                  {/* <Label htmlFor="description">Description</Label>
-                  <Textarea id="description" placeholder="Enter product description" className="min-h-[100px]" /> */}
                   <CustomFormField
                     control={form.control}
                     name="description"
@@ -135,8 +130,6 @@ export default function AddProduct() {
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="grid gap-2">
-                    {/* <Label htmlFor="price">Price</Label>
-                    <Input id="price" type="number" placeholder="Enter price" /> */}
                     <CustomFormField
                       control={form.control}
                       name="price"
@@ -155,8 +148,6 @@ export default function AddProduct() {
                     </CustomFormField>
                   </div>
                   <div className="grid gap-2">
-                    {/* <Label htmlFor="stock">Stock</Label>
-                    <Input id="stock" type="number" placeholder="Enter stock" /> */}
                     <CustomFormField
                       control={form.control}
                       name="stock"
@@ -176,18 +167,6 @@ export default function AddProduct() {
                   </div>
                 </div>
                 <div className="grid gap-2">
-                  {/* <Label htmlFor="category">Category</Label>
-                  <Select >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="electronics">Electronics</SelectItem>
-                      <SelectItem value="clothing">Clothing</SelectItem>
-                      <SelectItem value="home">Home</SelectItem>
-                      <SelectItem value="sports">Sports</SelectItem>
-                    </SelectContent>
-                  </Select> */}
                   <CustomFormSelect
                     control={form.control}
                     name="category"
@@ -196,13 +175,12 @@ export default function AddProduct() {
                     options={categories}
                   />
                 </div>
-                {/* <Button className="ml-auto">Add Product</Button> */}
                 <Button
                   type="submit"
                   disabled={form.formState.isSubmitting}
                   aria-disabled={form.formState.isSubmitting}
                 >
-                  {form.formState.isSubmitted ? (
+                  {form.formState.isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       Please wait
