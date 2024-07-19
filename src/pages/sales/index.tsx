@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../components/ui/alert-dialog";
 import { IProduct } from "../../utils/apis/products/types";
 import { useAuth } from "../../utils/apis/contexts/token";
-import { getProduct } from "../../utils/apis/products/api";
+import axios from "axios";
 
 export default function Sales() {
   // const [currentPage, setCurrentPage] = useState(1);
@@ -32,15 +32,26 @@ export default function Sales() {
   const [data, setData] = useState<IProduct[]>([])
   const { addNotification } = useAuth()
 
+  // async function fetchData() {
+  //   try {
+  //     const response = await getProduct()
+  //     setData(response.data)
+  //   } catch (error: any) {
+  //     addNotification(error.message, "error");
+  //   }
+  // }
+
   async function fetchData() {
     try {
-      const response = await getProduct()
-      setData(response.data)
+      const response = await axios.get(
+        "https://one.ybtech.online/products?all=true"
+      );
+      setData(response.data.data);
     } catch (error: any) {
       addNotification(error.message, "error");
     } 
   }
-
+  
   useEffect(() => {
     fetchData();
   }, []);

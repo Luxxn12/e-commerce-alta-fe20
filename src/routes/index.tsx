@@ -48,7 +48,7 @@ const App = () => {
       element: <EditProduct />,
     },
     {
-      path: "/my-product/:id_product",
+      path: "/my-product/:product_id",
       element: <DetailProduct />,
     },
     {

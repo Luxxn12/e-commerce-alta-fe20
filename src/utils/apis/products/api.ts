@@ -60,7 +60,7 @@ export const addProduct = async (body: ProductSchema) => {
         formData.append(key, valueFormatData(body[key]));
       }
     }
-    const response = await openAPI.post(`/products`, formData, {
+    const response = await realAPI.post(`/products`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
