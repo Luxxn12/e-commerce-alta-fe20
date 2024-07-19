@@ -15,6 +15,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 1",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 2",
   },
   {
     id: 3,
@@ -45,6 +47,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 3",
   },
   {
     id: 4,
@@ -60,6 +63,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 4",
   },
   {
     id: 5,
@@ -75,6 +79,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 5",
   },
   {
     id: 6,
@@ -90,6 +95,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 6",
   },
   {
     id: 7,
@@ -105,6 +111,7 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 7",
   },
   {
     id: 8,
@@ -120,5 +127,6 @@ export const sampleProductCard: IProduct[] = [
     createdAt: "2022-01-01T00:00:00.000Z",
     updatedAt: "2022-01-01T00:00:00.000Z",
     deletedAt: null,
+    seller: "Seller 8",
   },
 ];

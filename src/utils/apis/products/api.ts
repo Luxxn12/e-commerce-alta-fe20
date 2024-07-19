@@ -1,7 +1,8 @@
 import { openAPI } from "../config/axios-with-config";
 import { checkProperty, valueFormatData } from "../../functions";
 import { Response } from "../../types/api";
-import { IProduct, ProductSchema } from "./types";
+import  { openAPI } from "../config/axios-with-config";
+import { IProduct, IProductDetail, ProductSchema } from "./types";
 
 export const getProductById = async (product_id: any) => {
   try {
@@ -43,7 +44,7 @@ export const getProduct = async (params?: Request) => {
 export const getDetailProduct = async (id_product: string) => {
   try {
     const response = await openAPI.get(`/products/${id_product}`);
-    return response.data as Response<IProduct>;
+    return response.data as Response<IProductDetail>;
   } catch (error: any) {
     const { message } = error.response.data.message;
     throw new Error(message);
@@ -66,7 +67,7 @@ export const addProduct = async (body: ProductSchema) => {
       },
     });
 
-    return response.data as Response<any>;
+    return response.data as Response
   } catch (error: any) {
     const { message } = error.response.data.message;
     throw new Error(message);
@@ -86,15 +87,11 @@ export const updateProduct = async (
       }
     }
 
-    const response = await openAPI.put(
-      `/products/${id_product}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const response = await openAPI.put(`/products/${id_product}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return response.data as Response;
   } catch (error: any) {

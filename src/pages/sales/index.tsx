@@ -9,16 +9,16 @@ import {
   TableRow,
 } from "../../components/ui/table";
 import AppLayout from "../../layouts/app-layout";
-import { sampleProductCard } from "../../utils/apis/products/sample-data";
+// import { sampleProductCard } from "../../utils/apis/products/sample-data";
 import { useEffect, useState } from "react";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "../../components/ui/pagination";
+// import {
+//   Pagination,
+//   PaginationContent,
+//   PaginationItem,
+//   PaginationLink,
+//   PaginationNext,
+//   PaginationPrevious,
+// } from "../../components/ui/pagination";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../../components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../components/ui/alert-dialog";
@@ -27,8 +27,8 @@ import { useAuth } from "../../utils/apis/contexts/token";
 import { getProduct } from "../../utils/apis/products/api";
 
 export default function Sales() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(10);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [productsPerPage] = useState(10);
   const [data, setData] = useState<IProduct[]>([])
   const { addNotification } = useAuth()
 
@@ -45,12 +45,12 @@ export default function Sales() {
     fetchData();
   }, []);
 
-  const lastProductIndex = currentPage * productsPerPage - 1;
-  const firstProductIndex = Math.max(0, lastProductIndex - productsPerPage + 1);
+  // const lastProductIndex = currentPage * productsPerPage - 1;
+  // const firstProductIndex = Math.max(0, lastProductIndex - productsPerPage + 1);
   // const currentProducts = sampleProductCard.slice(firstProductIndex, lastProductIndex + 1);
-  const totalPages = Math.ceil(sampleProductCard.length / productsPerPage);
+  // const totalPages = Math.ceil(sampleProductCard.length / productsPerPage);
 
-  const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
+  // const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <AppLayout>
@@ -76,7 +76,7 @@ export default function Sales() {
             <TableBody>
               {data.map((product, index) => (
                 <TableRow key={product.id}>
-                  <TableCell>{index + firstProductIndex + 1}</TableCell>
+                  <TableCell>{index}</TableCell>
                   <TableCell className="font-medium">{product.product_name}</TableCell>
                   <TableCell>
                     <img
@@ -136,7 +136,7 @@ export default function Sales() {
             </TableBody>
           </Table>
         </div>
-        <div className="flex justify-center mt-6">
+        {/* <div className="flex justify-center mt-6">
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -165,7 +165,7 @@ export default function Sales() {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
-        </div>
+        </div> */}
       </div>
     </AppLayout>
   );
