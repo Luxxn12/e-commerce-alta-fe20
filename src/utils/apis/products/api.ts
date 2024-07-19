@@ -1,6 +1,6 @@
 import { checkProperty, valueFormatData } from "../../functions";
-import {  Response } from "../../types/api";
-import axiosWithConfig from "../config/axios-with-config";
+import { Response } from "../../types/api";
+import  { openAPI } from "../config/axios-with-config";
 import { IProduct, ProductSchema } from "./types";
 
 export const getProduct = async (params?: Request) => {
@@ -20,7 +20,7 @@ export const getProduct = async (params?: Request) => {
 
     const url = query ? `/products?${query}` : "/products";
 
-    const response = await axiosWithConfig.get(url);
+    const response = await openAPI.get(url);
 
     return response.data as Response<IProduct[]>;
   } catch (error: any) {
@@ -31,7 +31,7 @@ export const getProduct = async (params?: Request) => {
 
 export const getDetailProduct = async (id_product: string) => {
   try {
-    const response = await axiosWithConfig.get(`/products/${id_product}`);
+    const response = await openAPI.get(`/products/${id_product}`);
     return response.data as Response<IProduct>;
   } catch (error: any) {
     const { message } = error.response.data.message;
@@ -49,13 +49,13 @@ export const addProduct = async (body: ProductSchema) => {
         formData.append(key, valueFormatData(body[key]));
       }
     }
-    const response = await axiosWithConfig.post(`/products`, formData, {
+    const response = await openAPI.post(`/products`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
 
-    return response.data as Response<any>
+    return response.data as Response
   } catch (error: any) {
     const { message } = error.response.data.message;
     throw new Error(message);
@@ -75,15 +75,11 @@ export const updateProduct = async (
       }
     }
 
-    const response = await axiosWithConfig.put(
-      `/products/${id_product}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const response = await openAPI.put(`/products/${id_product}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return response.data as Response;
   } catch (error: any) {
@@ -94,7 +90,7 @@ export const updateProduct = async (
 
 export const deleteProduct = async (id_product: string) => {
   try {
-    const response = await axiosWithConfig.delete(`/products/${id_product}`);
+    const response = await openAPI.delete(`/products/${id_product}`);
 
     return response.data as Response;
   } catch (error: any) {

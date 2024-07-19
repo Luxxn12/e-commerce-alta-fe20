@@ -6,11 +6,16 @@ const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
 
 const base = z.object({
   product_name: z.string().min(1, { message: "product name is requared" }),
-  price: z.number().min(1, { message: "price is requared" }),
+  price: z.preprocess(
+    (a) => parseInt(z.string().parse(a), 10),
+    z.number().gte(1, 'Price must be at least 1"')
+  ),
   description: z.string().min(1, { message: "Description is required" }),
   category: z.string().min(1, { message: "Category is required" }),
-  saller: z.string().min(1, { message: "saller is required" }),
-  stock: z.number().min(1, { message: "Stock is required" }),
+  stock: z.preprocess(
+    (a) => parseInt(z.string().parse(a), 10),
+    z.number().gte(1, "Stock must be at least 1")
+  ),
 });
 
 export const addProductSchema = z
