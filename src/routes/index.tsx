@@ -56,7 +56,7 @@ const App = () => {
       element: <Products />,
     },
     {
-      path: "/product/:id_product",
+      path: "/product/:product_id",
       element: <Show />,
     },
     {

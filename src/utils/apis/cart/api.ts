@@ -14,8 +14,9 @@ export const getCart = async () => {
 
     const response = await realAPI.get<Response<ICart>>("/cart");
     return response.data;
-  } catch (error) {
-    throw error;
+  } catch (error: any) {
+    const { message } = error.response.data.message;
+    throw Error(message);
   }
 };
 
@@ -30,8 +31,9 @@ export const addToCart = async (product_id: number = 5) => {
     const response = await realAPI.post("/cart", { product_id: product_id });
     console.log(response)
     return response.data;
-  } catch (error) {
-    throw error;
+  } catch (error: any) {
+    const { message } = error.response.data.message;
+    throw Error(message);
   }
 };
 
@@ -48,7 +50,8 @@ export const deleteCartItem = async (cart_id: number = 5) => {
       data: { cart_id },
     });
     return response.data;
-  } catch (error) {
-    throw error;
+  } catch (error: any) {
+    const { message } = error.response.data.message;
+    throw Error(message);
   }
 };

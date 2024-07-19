@@ -1,12 +1,12 @@
 
 import { checkProperty, valueFormatData } from "../../functions";
 import { Response } from "../../types/api";
-import  { openAPI } from "../config/axios-with-config";
+import  { openAPI, realAPI } from "../config/axios-with-config";
 import { IProduct, IProductDetail, ProductSchema } from "./types";
 
 export const getProductById = async (product_id: any) => {
   try {
-    const response = await openAPI.get<Response<IProductDetail>>(`/products/${product_id}`);
+    const response = await realAPI.get<Response<IProductDetail>>(`/products/${product_id}`);
     return response.data;
   } catch (error: any) {
     const { message } = error.response.data.message;
