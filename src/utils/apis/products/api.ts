@@ -1,7 +1,7 @@
 import { checkProperty, valueFormatData } from "../../functions";
 import { Response } from "../../types/api";
 import  { openAPI } from "../config/axios-with-config";
-import { IProduct, ProductSchema } from "./types";
+import { IProduct, IProductDetail, ProductSchema } from "./types";
 
 export const getProduct = async (params?: Request) => {
   try {
@@ -32,7 +32,7 @@ export const getProduct = async (params?: Request) => {
 export const getDetailProduct = async (id_product: string) => {
   try {
     const response = await openAPI.get(`/products/${id_product}`);
-    return response.data as Response<IProduct>;
+    return response.data as Response<IProductDetail>;
   } catch (error: any) {
     const { message } = error.response.data.message;
     throw new Error(message);
