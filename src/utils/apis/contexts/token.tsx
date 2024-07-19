@@ -1,4 +1,12 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import { getCart, addToCart as apiAddToCart } from "../cart/api";
+import { ICart } from "../cart/type";
 
 interface AuthContextType {
   token: string | null;
@@ -14,6 +22,8 @@ interface AuthContextType {
     type: "success" | "error" | "info"
   ) => void;
   clearNotifications: () => void;
+  cart: ICart | null;
+  addToCart: (product_id: any) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,6 +36,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [notifications, setNotifications] = useState<
     { id: number; message: string; type: "success" | "error" | "info" }[]
   >([]);
+
+  const [cart, setCart] = useState<ICart | null>(null);
 
   const addNotification = (
     message: string,
@@ -53,6 +65,34 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     saveToken(null);
   };
 
+  useEffect(() => {
+    const fetchCartData = async () => {
+      try {
+        const { data } = await getCart();
+        setCart(data);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
+
+    fetchCartData();
+  }, []);
+
+  const addToCart = async (product_id: any) => {
+    try {
+      //tambah cart_items
+      await apiAddToCart(product_id);
+
+      // Setelah berhasil menambahkan, ambil data keranjang terbaru
+      const { data } = await getCart();
+      setCart(data);
+
+      addNotification("Added to cart successfully", "success");
+    } catch (error) {
+      addNotification("Failed to add to cart", "error");
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -62,6 +102,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         notifications,
         addNotification,
         clearNotifications,
+        cart,
+        addToCart,
       }}
     >
       {children}
