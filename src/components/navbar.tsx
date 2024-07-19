@@ -15,8 +15,6 @@ import { Avatar, AvatarImage } from "./ui/avatar";
 import { UserProfile } from "../utils/apis/user/type";
 import { getUserProfile } from "../utils/apis/user/api";
 
-import userProfileImage from "../assets/icons8-male-user-48.png";
-
 const Navbar: React.FC = () => {
   const { token, logout, cart } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +36,7 @@ const Navbar: React.FC = () => {
     }
   };
 
-  console.log(userProfile)
+  console.log(userProfile);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -122,9 +120,9 @@ const Navbar: React.FC = () => {
 
                 <DropdownMenu>
                   <DropdownMenuTrigger className="">
-                    <Avatar>
+                    <Avatar className="border border-black">
                       <AvatarImage
-                        src={userProfileImage}
+                        src={"https://i.pravatar.cc/1000?img=1"}
                         alt={userProfile?.fullname}
                       />
                     </Avatar>
@@ -140,16 +138,16 @@ const Navbar: React.FC = () => {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Link to="/my-product">Dashboard</Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Link to="/my-transaction">My transaction</Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Link to="/profile">Edit profile</Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <button onClick={logout}>logout</button>
                       </DropdownMenuItem>
                     </DropdownMenuGroup>

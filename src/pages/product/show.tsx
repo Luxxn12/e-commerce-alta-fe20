@@ -67,25 +67,13 @@ const Show = () => {
               </p>
               <Button onClick={handleAddToCart}>Add to Cart</Button>
                 
-                
-              {/* {isProduct?.product.product_name}
-            </h1>
-            <span className="text-sm text-neutral-400">
-              Seller: {isProduct?.product?.seller} | Category: {isProduct?.product.category} | Stock: {isProduct?.product.stock}
-            </span>
-            <div>
-              <p className="text-lg text-lime-600 mb-3">{isProduct?.product.price}</p>
-              <Button>Add to Cart</Button>
-
-            </div>
-
-            <div className="my-4">
+              <div className="my-4">
               <h5 className="text-lg text-neutral-600">Description</h5>
               <p className="text-justify text-neutral-500">
 
-                {isProduct?.product.description}
+                {product?.product.description}
               </p>
-            </div> */}
+            </div>
             </div>
             </div>
         </div>
